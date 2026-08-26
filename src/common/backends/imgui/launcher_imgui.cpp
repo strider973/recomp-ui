@@ -1152,7 +1152,10 @@ void draw_game_panel(LauncherModel* m, const LauncherTheme& th, bool fill_h = fa
     }
     ImGui::Dummy(ImVec2(0, px(12)));
     char change_label[32];
-    snprintf(change_label, sizeof(change_label), "Change %s", noun);
+    if (disc_verdict)
+        snprintf(change_label, sizeof(change_label), "Open *.CUE");
+    else
+        snprintf(change_label, sizeof(change_label), "Change %s", noun);
     if (ImGui::Button(change_label, ImVec2(availw, px(34)))) {
         // Native file dialog filter comes from the active console's
         // SystemProfile.rom_filter — never a hardcoded per-system set. Every
